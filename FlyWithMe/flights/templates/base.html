@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}FlyWithMe{% endblock %}</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        .topbar {
+            background-color: #F19143;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+        .topbar a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+        .topbar a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    {% if not is_landing_page %}
+    <div class="topbar">
+        <div class="container">
+            <a href="{% url 'landing_page' %}">Home</a>
+            <a href="{% url 'flight_list' %}">Flights</a>
+            <a href="{% url 'logout' %}" onclick="return confirm('Are you sure you want to log out?');">Log Out</a>
+
+        </div>
+    </div>
+    {% else %}
+    <div class="topbar">
+        <div class="container">
+            <a href="{% url 'login' %}">Login</a>
+            <a href="{% url 'registration' %}">Registration</a>
+        </div>
+    </div>
+    {% endif %}
+    <div class="container">
+        {% block content %}
+        {% endblock %}
+    </div>
+</body>
+</html>
+

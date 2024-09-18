@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}Search Result{% endblock %}
+
+{% block content %}
+<h1>Search Result</h1>
+{% if flight %}
+    <table style="width: 100%; border-collapse: collapse;">
+        <tr style="background-color: #F55536; color: white;">
+            <th style="padding: 10px;">Flight ID</th>
+            <th style="padding: 10px;">Departure Airport</th>
+            <th style="padding: 10px;">Departure Date</th>
+            <th style="padding: 10px;">Departure Time</th>
+            <th style="padding: 10px;">Arrival Airport</th>
+            <th style="padding: 10px;">Arrival Date</th>
+            <th style="padding: 10px;">Arrival Time</th>
+        </tr>
+        <tr>
+            <td style="padding: 10px; border: 1px solid #ddd;">{{ flight.flight_id }}</td>
+            <td style="padding: 10px; border: 1px solid #ddd;">{{ flight.dep_airport }}</td>
+            <td style="padding: 10px; border: 1px solid #ddd;">{{ flight.dep_date }}</td>
+            <td style="padding: 10px; border: 1px solid #ddd;">{{ flight.dep_time }}</td>
+            <td style="padding: 10px; border: 1px solid #ddd;">{{ flight.arr_airport }}</td>
+            <td style="padding: 10px; border: 1px solid #ddd;">{{ flight.arr_date }}</td>
+            <td style="padding: 10px; border: 1px solid #ddd;">{{ flight.arr_time }}</td>
+        </tr>
+    </table>
+{% else %}
+    <p>No flight found with the provided ID.</p>
+{% endif %}
+{% endblock %}

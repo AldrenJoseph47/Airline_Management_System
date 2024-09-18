@@ -1,0 +1,97 @@
+{% extends 'base_no_topbar.html' %}
+
+{% block title %}Register{% endblock %}
+
+{% block content %}
+<div class="registration-form-container">
+    <div class="registration-form">
+        <h2>Register</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Register</button>
+        </form>
+        <p>Already have an account? <a href="{% url 'login' %}">Login here</a></p>
+    </div>
+</div>
+
+<style>
+    body {
+        background-color: #F5F5F5;
+    }
+
+    .registration-form-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 80vh;
+    }
+
+    .registration-form {
+        max-width: 600px;  /* Increased width */
+        padding: 30px;
+        background-color: #fff;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+
+    .registration-form h2 {
+        color: #F55536;
+        font-size: 2em;
+        margin-bottom: 20px;
+    }
+
+    .registration-form form {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .registration-form input[type="text"],
+    .registration-form input[type="password"],
+    .registration-form input[type="email"] {
+        padding: 12px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        font-size: 1em;
+        transition: border-color 0.3s ease;
+    }
+
+    .registration-form input:focus {
+        border-color: #F55536;
+        outline: none;
+    }
+
+    .registration-form button {
+        background-color: #F55536;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        padding: 12px;
+        font-size: 1.1em;
+        cursor: pointer;
+        transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .registration-form button:hover {
+        background-color: #FABC3C;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .registration-form p {
+        margin-top: 15px;
+        font-size: 0.9em;
+    }
+
+    .registration-form a {
+        color: #F55536;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    .registration-form a:hover {
+        text-decoration: underline;
+    }
+</style>
+{% endblock %}

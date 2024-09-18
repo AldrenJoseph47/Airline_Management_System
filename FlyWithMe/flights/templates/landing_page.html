@@ -1,0 +1,100 @@
+{% extends 'base_no_topbar.html' %}
+{% load static %}
+{% block title %}Welcome to FlyWithMe{% endblock %}
+
+{% block content %}
+<div class="landing">
+    <h1>Welcome to FlyWithMe</h1>
+    <p>Your trusted partner for seamless air travel experiences.</p>
+    <p>From booking flights to managing your travel schedule, FlyWithMe is here to make your journey as smooth as possible.</p>
+    <p>We offer a wide selection of domestic and international flights with convenient booking options, ensuring you’re always connected to your destination.</p>
+    <p>Let us take you where you need to go, on time and in comfort.</p>
+    <a href="{% url 'login' %}" class="explore-btn">LOGIN TO EXPLORE</a>
+</div>
+
+<!-- Cursor Circle -->
+<div id="cursor"></div>
+
+<style>
+    .landing {
+        text-align: center;
+        padding: 50px;
+        background-image: url("{% static 'images/bg.jpg' %}");
+        background-size: cover;
+        background-position: center;
+        color: #F55536;
+        position: relative;
+        overflow: hidden;
+        height: 100vh;
+    }
+
+    .landing h1 {
+        font-size: 3em;
+        margin-bottom: 20px;
+        transition: color 0.3s ease;
+    }
+
+    .landing p {
+        font-size: 1.4em;
+        margin: 10px 0;
+        transition: color 0.3s ease;
+    }
+
+    .explore-btn {
+        display: inline-block;
+        padding: 15px 30px;
+        background-color: #F55536;
+        color: white;
+        text-decoration: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 1.2em;
+        transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+        margin-top: 30px;
+    }
+
+    .explore-btn:hover {
+        background-color: #FABC3C;
+        color: #F55536;
+        transform: scale(1.1);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    #cursor {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background-color: #F55536;
+        border-radius: 50%;
+        pointer-events: none;
+        transition: width 0.3s ease, height 0.3s ease, background-color 0.3s ease;
+        transform: translate(-50%, -50%);
+    }
+
+    #cursor.expand {
+        width: 30px;
+        height: 30px;
+        background-color: #FF950A;
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const cursor = document.getElementById('cursor');
+        document.addEventListener('mousemove', function(e) {
+            cursor.style.left = e.pageX + 'px';
+            cursor.style.top = e.pageY + 'px';
+        });
+
+        document.querySelectorAll('.explore-btn').forEach(button => {
+            button.addEventListener('mouseover', function() {
+                cursor.classList.add('expand');
+            });
+
+            button.addEventListener('mouseout', function() {
+                cursor.classList.remove('expand');
+            });
+        });
+    });
+</script>
+{% endblock %}

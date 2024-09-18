@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}Edit Flight{% endblock %}
+
+{% block content %}
+<h1>Edit Flight</h1>
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" style="padding: 10px; background-color: #F19143; color: white; border: none; cursor: pointer;">Save Changes</button>
+</form>
+<a href="{% url 'flight_list' %}" style="display: block; margin-top: 20px; padding: 10px; background-color: #F55536; color: white; text-align: center; text-decoration: none;">Cancel</a>
+{% endblock %}
+

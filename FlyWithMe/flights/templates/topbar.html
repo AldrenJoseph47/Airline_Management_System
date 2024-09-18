@@ -1,0 +1,49 @@
+<div class="topbar">
+    <div class="logo">
+        <h2>FlyWithMe</h2>
+    </div>
+    <div class="nav-links">
+        {% if user.is_authenticated %}
+            <span>Welcome, {{ user.username }}!</span>
+            <a href="{% url 'logout' %}" class="btn">Logout</a>
+        {% else %}
+            <a href="{% url 'login' %}" class="btn">Login</a>
+            <a href="{% url 'registration' %}" class="btn">Register</a>
+        {% endif %}
+    </div>
+</div>
+
+<style>
+    .topbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #333;
+        padding: 10px 20px;
+        color: white;
+    }
+    .topbar .logo h2 {
+        margin: 0;
+        color: #FABC3C;
+    }
+    .topbar .nav-links {
+        display: flex;
+        align-items: center;
+    }
+    .topbar .nav-links span {
+        margin-right: 20px;
+    }
+    .topbar .nav-links .btn {
+        background-color: #F55536;
+        color: white;
+        padding: 8px 16px;
+        border-radius: 8px;
+        text-decoration: none;
+        margin-left: 10px;
+        transition: background-color 0.3s ease;
+    }
+    .topbar .nav-links .btn:hover {
+        background-color: #FABC3C;
+        color: #F55536;
+    }
+</style>
